@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net45;net461;</TargetFrameworks>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>CommonLibs.HttpExtensions.BySunnyFish</PackageId>
+    <Description>
+      CommonLibs.HttpExtensions 扩展方法,辅助方法 GeneralHttpClient
+    </Description>
+    <Copyright>@ by sunnyfish</Copyright>
+    <Authors>sunnyfish</Authors>
+    <Company>sunnyfish</Company>
+    <NeutralLanguage></NeutralLanguage>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
+    <AssemblyVersion>1.0.5.0</AssemblyVersion>
+    <FileVersion>1.0.5.0</FileVersion>
+    <Version>1.0.5</Version>
+    <PackageIconUrl>https://nuget.cdn.azure.cn/v3-flatcontainer/aopsdk.core.bysunnyfish/1.0.0/icon</PackageIconUrl>
+    <PackageProjectUrl>https://gitee.com/sunnyfish/CommonLibs</PackageProjectUrl>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45' ">
+    <Reference Include="System.Net.Http" />
+    <PackageReference Include="CommonLibs.JsonNet.BySunnyFish" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461' ">
+    <Reference Include="System.Net.Http" />
+    <PackageReference Include="CommonLibs.JsonNet.BySunnyFish" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0' ">
+    <PackageReference Include="CommonLibs.JsonNet.BySunnyFish" Version="1.0.0" />
+  </ItemGroup>
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1' ">
+    <PackageReference Include="CommonLibs.JsonNet.BySunnyFish" Version="1.0.0" />
+  </ItemGroup>
+</Project>

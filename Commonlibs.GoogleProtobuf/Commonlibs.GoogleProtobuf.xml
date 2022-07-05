@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Commonlibs.GoogleProtobuf</name>
+    </assembly>
+    <members>
+        <member name="T:System.GoogleProtobufExtensions">
+             <summary>
+             Google Protobuf-net 扩展
+            
+             修改记录
+            		2020.08.06 版本：1.0.0 sunnyfish 创建。
+            		2020.08.07 版本：1.0.1 sunnyfish 增加支持继承类属性映射。
+            
+             <author>
+            		<name>sunnyfish</name>
+            		<date>2020.08.06</date>
+             </author>
+             </summary>
+        </member>
+        <member name="M:System.GoogleProtobufExtensions.ToProtobuf``1(``0)">
+            <summary>
+            将实体转为base64字符串
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <param name="obj">要转换的实体</param>
+            <returns>返回转换后的字符串</returns>
+        </member>
+        <member name="M:System.GoogleProtobufExtensions.FromProtobuf``1(System.String)">
+            <summary>
+            将base64字符串转为实体
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <param name="protobuf">base64 字符串</param>
+            <returns>返回转换后的实体</returns>
+        </member>
+        <member name="M:System.GoogleProtobufExtensions.ToProtobufBytes``1(``0)">
+            <summary>
+            将实体转为 byte数组
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <param name="obj">要转换的实体</param>
+            <returns>返回转换后的byte数组</returns>
+        </member>
+        <member name="M:System.GoogleProtobufExtensions.FromProtobufBytes``1(System.Byte[])">
+            <summary>
+            将byte数组转为实体
+            </summary>
+            <typeparam name="T">T</typeparam>
+            <param name="protobuf">byte数组</param>
+            <returns>返回转换后的实体</returns>
+        </member>
+        <member name="M:System.GoogleProtobufExtensions.InitProtobufType(System.Type[])">
+            <summary>
+            将 类型 转化为 支持 protobuf-net 序列化的类型，首次有效
+            </summary>
+            <param name="types">类型</param>
+        </member>
+        <member name="M:System.GoogleProtobufExtensions.IsSimpleType(System.Type)">
+            <summary>
+            是否为简单类型
+            </summary>
+            <param name="type"></param>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

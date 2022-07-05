@@ -1,0 +1,36 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFrameworks>netstandard2.0;netstandard2.1;net35;net40;net45;net461;</TargetFrameworks>
+		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+		<PackageId>CommonLibs.IdGenerator.BySunnyFish</PackageId>
+		<Description>
+			ID生成算法
+			获取mongodb算法生成的Id
+			IdGen.GetMongodbId()
+			获取雪花算法生成的Id，16为机器编号
+			IdGen.GetSnowFlakeId(16)
+		</Description>
+		<Copyright>@ by sunnyfish</Copyright>
+		<Authors>sunnyfish</Authors>
+		<Company>sunnyfish</Company>
+		<NeutralLanguage></NeutralLanguage>
+		<PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
+		<AssemblyVersion>1.0.0.0</AssemblyVersion>
+		<FileVersion>1.0.0.0</FileVersion>
+		<Version>1.0.0</Version>
+		<PackageIconUrl>https://nuget.cdn.azure.cn/v3-flatcontainer/aopsdk.core.bysunnyfish/1.0.0/icon</PackageIconUrl>
+		<PackageProjectUrl>https://gitee.com/sunnyfish/CommonLibs</PackageProjectUrl>
+	</PropertyGroup>
+
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+		<DocumentationFile>CommonLibs.IdGenerator.xml</DocumentationFile>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<None Update="CommonLibs.IdGenerator.xml">
+			<CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</None>
+	</ItemGroup>
+
+</Project>

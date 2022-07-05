@@ -1,0 +1,376 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>CommonLibs.IdGenerator</name>
+    </assembly>
+    <members>
+        <member name="T:CommonLibs.IdGenerator.IdGen">
+            <summary>
+            静态调用方法，获取Id
+            </summary>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.IdGen.GetMongodbId">
+            <summary>
+            Mongodb算法Id
+            </summary>
+            <returns>返回生成的24位长度Id</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.IdGen.GetMongodbId(System.DateTime)">
+            <summary>
+            Mongodb算法Id
+            </summary>
+            <param name="timestamp">时间戳，当前时间</param>
+            <returns>返回生成的24位长度Id</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.IdGen.GetMongodbId(System.Int32)">
+            <summary>
+            Mongodb算法Id
+            </summary>
+            <param name="timestamp">时间戳，1970年到现在秒数</param>
+            <returns>返回生成的24位长度Id</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.IdGen.GetSnowFlakeId(System.Int32)">
+            <summary>
+            雪花算法Id
+            </summary>
+            <param name="workerId">机器编号 0-255</param>
+            <returns>返回 18-19位 长度的数字</returns>
+        </member>
+        <member name="T:CommonLibs.IdGenerator.Mongodb.BsonConstants">
+            <summary>
+            A static class containing BSON constants.
+            </summary>
+        </member>
+        <member name="P:CommonLibs.IdGenerator.Mongodb.BsonConstants.DateTimeMaxValueMillisecondsSinceEpoch">
+            <summary>
+            Gets the number of milliseconds since the Unix epoch for DateTime.MaxValue.
+            </summary>
+        </member>
+        <member name="P:CommonLibs.IdGenerator.Mongodb.BsonConstants.DateTimeMinValueMillisecondsSinceEpoch">
+            <summary>
+            Gets the number of milliseconds since the Unix epoch for DateTime.MinValue.
+            </summary>
+        </member>
+        <member name="P:CommonLibs.IdGenerator.Mongodb.BsonConstants.UnixEpoch">
+            <summary>
+            Gets the Unix Epoch for BSON DateTimes (1970-01-01).
+            </summary>
+        </member>
+        <member name="T:CommonLibs.IdGenerator.Mongodb.BsonUtils">
+            <summary>
+            A static class containing BSON utility methods.
+            </summary>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.BsonUtils.GetFriendlyTypeName(System.Type)">
+            <summary>
+            Gets a friendly class name suitable for use in error messages.
+            </summary>
+            <param name="type">The type.</param>
+            <returns>A friendly class name.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.BsonUtils.ParseHexString(System.String)">
+            <summary>
+            Parses a hex string into its equivalent byte array.
+            </summary>
+            <param name="s">The hex string to parse.</param>
+            <returns>The byte equivalent of the hex string.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.BsonUtils.ToDateTimeFromMillisecondsSinceEpoch(System.Int64)">
+            <summary>
+            Converts from number of milliseconds since Unix epoch to DateTime.
+            </summary>
+            <param name="millisecondsSinceEpoch">The number of milliseconds since Unix epoch.</param>
+            <returns>A DateTime.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.BsonUtils.ToHexChar(System.Int32)">
+            <summary>
+            Converts a value to a hex character.
+            </summary>
+            <param name="value">The value (assumed to be between 0 and 15).</param>
+            <returns>The hex character.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.BsonUtils.ToHexString(System.Byte[])">
+            <summary>
+            Converts a byte array to a hex string.
+            </summary>
+            <param name="bytes">The byte array.</param>
+            <returns>A hex string.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.BsonUtils.ToLocalTime(System.DateTime)">
+            <summary>
+            Converts a DateTime to local time (with special handling for MinValue and MaxValue).
+            </summary>
+            <param name="dateTime">A DateTime.</param>
+            <returns>The DateTime in local time.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.BsonUtils.ToMillisecondsSinceEpoch(System.DateTime)">
+            <summary>
+            Converts a DateTime to number of milliseconds since Unix epoch.
+            </summary>
+            <param name="dateTime">A DateTime.</param>
+            <returns>Number of seconds since Unix epoch.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.BsonUtils.ToUniversalTime(System.DateTime)">
+            <summary>
+            Converts a DateTime to UTC (with special handling for MinValue and MaxValue).
+            </summary>
+            <param name="dateTime">A DateTime.</param>
+            <returns>The DateTime in UTC.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.BsonUtils.TryParseHexString(System.String,System.Byte[]@)">
+            <summary>
+            Tries to parse a hex string to a byte array.
+            </summary>
+            <param name="s">The hex string.</param>
+            <param name="bytes">A byte array.</param>
+            <returns>True if the hex string was successfully parsed.</returns>
+        </member>
+        <member name="T:CommonLibs.IdGenerator.Mongodb.MongodbObjectId">
+            <summary>
+            Represents an MongodbObjectId
+            </summary>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.#ctor(System.Byte[])">
+            <summary>
+            Initializes a new instance of the MongodbObjectId class.
+            </summary>
+            <param name="bytes">The bytes.</param>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.#ctor(System.Byte[],System.Int32)">
+            <summary>
+            Initializes a new instance of the MongodbObjectId class.
+            </summary>
+            <param name="bytes">The bytes.</param>
+            <param name="index">The index into the byte array where the MongodbObjectId starts.</param>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.#ctor(System.DateTime,System.Int32,System.Int16,System.Int32)">
+            <summary>
+            Initializes a new instance of the MongodbObjectId class.
+            </summary>
+            <param name="timestamp">The timestamp (expressed as a DateTime).</param>
+            <param name="machine">The machine hash.</param>
+            <param name="pid">The PID.</param>
+            <param name="increment">The increment.</param>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.#ctor(System.Int32,System.Int32,System.Int16,System.Int32)">
+            <summary>
+            Initializes a new instance of the MongodbObjectId class.
+            </summary>
+            <param name="timestamp">The timestamp.</param>
+            <param name="machine">The machine hash.</param>
+            <param name="pid">The PID.</param>
+            <param name="increment">The increment.</param>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.#ctor(System.String)">
+            <summary>
+            Initializes a new instance of the MongodbObjectId class.
+            </summary>
+            <param name="value">The value.</param>
+        </member>
+        <member name="P:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.Empty">
+            <summary>
+            Gets an instance of MongodbObjectId where the value is empty.
+            </summary>
+        </member>
+        <member name="P:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.Timestamp">
+            <summary>
+            Gets the timestamp.
+            </summary>
+        </member>
+        <member name="P:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.Machine">
+            <summary>
+            Gets the machine.
+            </summary>
+        </member>
+        <member name="P:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.Pid">
+            <summary>
+            Gets the PID.
+            </summary>
+        </member>
+        <member name="P:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.Increment">
+            <summary>
+            Gets the increment.
+            </summary>
+        </member>
+        <member name="P:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.CreationTime">
+            <summary>
+            Gets the creation time (derived from the timestamp).
+            </summary>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.op_LessThan(CommonLibs.IdGenerator.Mongodb.MongodbObjectId,CommonLibs.IdGenerator.Mongodb.MongodbObjectId)">
+            <summary>
+            Compares two ObjectIds.
+            </summary>
+            <param name="lhs">The first MongodbObjectId.</param>
+            <param name="rhs">The other MongodbObjectId</param>
+            <returns>True if the first MongodbObjectId is less than the second MongodbObjectId.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.op_LessThanOrEqual(CommonLibs.IdGenerator.Mongodb.MongodbObjectId,CommonLibs.IdGenerator.Mongodb.MongodbObjectId)">
+            <summary>
+            Compares two ObjectIds.
+            </summary>
+            <param name="lhs">The first MongodbObjectId.</param>
+            <param name="rhs">The other MongodbObjectId</param>
+            <returns>True if the first MongodbObjectId is less than or equal to the second MongodbObjectId.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.op_Equality(CommonLibs.IdGenerator.Mongodb.MongodbObjectId,CommonLibs.IdGenerator.Mongodb.MongodbObjectId)">
+            <summary>
+            Compares two ObjectIds.
+            </summary>
+            <param name="lhs">The first MongodbObjectId.</param>
+            <param name="rhs">The other MongodbObjectId.</param>
+            <returns>True if the two MongodbObjectId are equal.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.op_Inequality(CommonLibs.IdGenerator.Mongodb.MongodbObjectId,CommonLibs.IdGenerator.Mongodb.MongodbObjectId)">
+            <summary>
+            Compares two ObjectIds.
+            </summary>
+            <param name="lhs">The first MongodbObjectId.</param>
+            <param name="rhs">The other MongodbObjectId.</param>
+            <returns>True if the two MongodbObjectIds are not equal.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.op_GreaterThanOrEqual(CommonLibs.IdGenerator.Mongodb.MongodbObjectId,CommonLibs.IdGenerator.Mongodb.MongodbObjectId)">
+            <summary>
+            Compares two ObjectIds.
+            </summary>
+            <param name="lhs">The first MongodbObjectId</param>
+            <param name="rhs">The other MongodbObjectId</param>
+            <returns>True if the first MongodbObjectId is greather than or equal to the second MongodbObjectId.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.op_GreaterThan(CommonLibs.IdGenerator.Mongodb.MongodbObjectId,CommonLibs.IdGenerator.Mongodb.MongodbObjectId)">
+            <summary>
+            Compares two ObjectIds.
+            </summary>
+            <param name="lhs">The first MongodbObjectId.</param>
+            <param name="rhs">The other MongodbObjectId</param>
+            <returns>True if the first MongodbObjectId is greather than the second MongodbObjectId.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.GenerateNewId">
+            <summary>
+            Generates a new MongodbObjectId with a unique value.
+            </summary>
+            <returns>An ObjectId.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.GenerateNewId(System.DateTime)">
+            <summary>
+            Generates a new MongodbObjectId with a unique value (with the timestamp component based on a given DateTime).
+            </summary>
+            <param name="timestamp">The timestamp component (expressed as a DateTime).</param>
+            <returns>An ObjectId.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.GenerateNewId(System.Int32)">
+            <summary>
+            Generates a new MongodbObjectId with a unique value (with the given timestamp).
+            </summary>
+            <param name="timestamp">The timestamp component.</param>
+            <returns>An ObjectId.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.Pack(System.Int32,System.Int32,System.Int16,System.Int32)">
+            <summary>
+            Packs the components of an MongodbObjectId into a byte array.
+            </summary>
+            <param name="timestamp">The timestamp.</param>
+            <param name="machine">The machine hash.</param>
+            <param name="pid">The PID.</param>
+            <param name="increment">The increment.</param>
+            <returns>A byte array.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.Parse(System.String)">
+            <summary>
+            Parses a string and creates a new ObjectId.
+            </summary>
+            <param name="s">The string value.</param>
+            <returns>A ObjectId.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.TryParse(System.String,CommonLibs.IdGenerator.Mongodb.MongodbObjectId@)">
+            <summary>
+            Tries to parse a string and create a new ObjectId.
+            </summary>
+            <param name="s">The string value.</param>
+            <param name="objectId">The new ObjectId.</param>
+            <returns>True if the string was parsed successfully.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.Unpack(System.Byte[],System.Int32@,System.Int32@,System.Int16@,System.Int32@)">
+            <summary>
+            Unpacks a byte array into the components of an ObjectId.
+            </summary>
+            <param name="bytes">A byte array.</param>
+            <param name="timestamp">The timestamp.</param>
+            <param name="machine">The machine hash.</param>
+            <param name="pid">The PID.</param>
+            <param name="increment">The increment.</param>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.GetCurrentProcessId">
+            <summary>
+            Gets the current process id.  This method exists because of how CAS operates on the call stack, checking
+            for permissions before executing the method.  Hence, if we inlined this call, the calling method would not execute
+            before throwing an exception requiring the try/catch at an even higher level that we don't necessarily control.
+            </summary>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.CompareTo(CommonLibs.IdGenerator.Mongodb.MongodbObjectId)">
+            <summary>
+            Compares this MongodbObjectId to another ObjectId.
+            </summary>
+            <param name="other">The other ObjectId.</param>
+            <returns>A 32-bit signed integer that indicates whether this MongodbObjectId is less than, equal to, or greather than the other.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.Equals(CommonLibs.IdGenerator.Mongodb.MongodbObjectId)">
+            <summary>
+            Compares this MongodbObjectId to another ObjectId.
+            </summary>
+            <param name="rhs">The other ObjectId.</param>
+            <returns>True if the two ObjectIds are equal.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.Equals(System.Object)">
+            <summary>
+            Compares this MongodbObjectId to another object.
+            </summary>
+            <param name="obj">The other object.</param>
+            <returns>True if the other object is an MongodbObjectId and equal to this one.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.GetHashCode">
+            <summary>
+            Gets the hash code.
+            </summary>
+            <returns>The hash code.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.ToByteArray">
+            <summary>
+            Converts the MongodbObjectId to a byte array.
+            </summary>
+            <returns>A byte array.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.ToByteArray(System.Byte[],System.Int32)">
+            <summary>
+            Converts the MongodbObjectId to a byte array.
+            </summary>
+            <param name="destination">The destination.</param>
+            <param name="offset">The offset.</param>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.Mongodb.MongodbObjectId.ToString">
+            <summary>
+            Returns a string representation of the value.
+            </summary>
+            <returns>A string representation of the value.</returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.SnowFlake.#ctor(System.Int64)">
+            <summary>
+            机器码
+            </summary>
+            <param name="workerId"></param>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.SnowFlake.TillNextMillis(System.Int64)">
+            <summary>
+            获取下一微秒时间戳
+            </summary>
+            <param name="lastTimestamp"></param>
+            <returns></returns>
+        </member>
+        <member name="M:CommonLibs.IdGenerator.SnowFlake.TimeGen">
+            <summary>
+            生成当前时间戳
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

@@ -1,0 +1,55 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netstandard2.0;netstandard2.1;net40;net45;net461;</TargetFrameworks>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageId>CommonLibs.GoogleProtobuf.BySunnyFish</PackageId>
+    <Description>
+      Protobuf-net 扩展方法
+      一次性实例化：GoogleProtobufExtensions.InitProtobufType(type(T))
+      使用方法 T.ToProtobuf();str.FromProtobuf();
+      使用方法 T.ToProtobufBytes();str.FromProtobufBytes();
+    </Description>
+    <Copyright>@ by sunnyfish</Copyright>
+    <Authors>sunnyfish</Authors>
+    <Company>sunnyfish</Company>
+    <NeutralLanguage></NeutralLanguage>
+    <PackageLicenseUrl>http://www.apache.org/licenses/LICENSE-2.0.html</PackageLicenseUrl>
+    <AssemblyVersion>1.0.0.2</AssemblyVersion>
+    <FileVersion>1.0.0.2</FileVersion>
+    <Version>1.0.2</Version>
+    <PackageIconUrl>https://nuget.cdn.azure.cn/v3-flatcontainer/aopsdk.core.bysunnyfish/1.0.0/icon</PackageIconUrl>
+    <PackageProjectUrl>https://gitee.com/sunnyfish/CommonLibs</PackageProjectUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|netstandard2.0|AnyCPU'">
+    <DocumentationFile>Commonlibs.GoogleProtobuf.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.0'">
+    <PackageReference Include="protobuf-net" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'netstandard2.1'">
+    <PackageReference Include="protobuf-net" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net40' ">
+    <PackageReference Include="protobuf-net" Version="2.4.6" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net45' ">
+    <PackageReference Include="protobuf-net" Version="2.4.6" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)' == 'net461' ">
+    <PackageReference Include="protobuf-net" Version="3.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Commonlibs.GoogleProtobuf.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+</Project>
